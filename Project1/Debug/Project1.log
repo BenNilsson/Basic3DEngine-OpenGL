@@ -1,0 +1,12 @@
+﻿  main.cpp
+main.obj : error LNK2019: unresolved external symbol _glfwInit referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwTerminate referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwCreateWindow referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwWindowShouldClose referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwPollEvents referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwMakeContextCurrent referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwSwapBuffers referenced in function _main
+main.obj : error LNK2001: unresolved external symbol _glad_glClear
+D:\OpenGL Attemps\Project1\Project1\glfw\lib-vc2019\glfw3.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+D:\OpenGL Attemps\Project1\Project1\glfw\lib-vc2019\glfw3dll.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+D:\OpenGL Attemps\Project1\Debug\Project1.exe : fatal error LNK1120: 8 unresolved externals
