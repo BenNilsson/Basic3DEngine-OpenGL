@@ -32,17 +32,18 @@ SceneLevel1::SceneLevel1(GLFWwindow* window) : Scene("level1", window)
 	// Shaders
 	lightingShader = new Shader("Shaders/multiple_lights.vs", "Shaders/multiple_lights.fs");
 	modelShader = new Shader("Shaders/model.vs", "Shaders/model.fs");
-	// Configure Shader
-	ConfigureLightShader();
 
 	lightingShader->use();
 	lightingShader->setInt("material.diffuse", 0);
 	lightingShader->setInt("material.specular", 1);
 
-	// Game Objects
-	penguin = new GameObject((char*)"Objects/Penguinv2/penguin.obj", Transform(glm::vec3(1.0f, -1.0f, 1.0f), glm::vec3(1.0f), glm::vec3(1.0f)), modelShader);
+	// Configure Shader
+	ConfigureLightShader();
 
-	ak47 = new GameObject((char*)"Objects/ak47/ak_47.obj", Transform(glm::vec3(1.3f, -0.15f, 1.5f), glm::vec3(0.50f), glm::vec3(1.0f)), modelShader);
+	// Game Objects
+	penguin = new Penguin((char*)"Objects/Penguinv2/Penguin.obj", Transform(glm::vec3(0.5f, -1.0f, 0.0f), glm::vec3(1.0f), glm::vec3(1.0f)), lightingShader);
+
+	ak47 = new GameObject((char*)"Objects/ak47/ak_47.obj", Transform(glm::vec3(1.3f, -0.15f, 1.0f), glm::vec3(0.50f), glm::vec3(1.0f)), lightingShader);
 }
 
 SceneLevel1::~SceneLevel1()

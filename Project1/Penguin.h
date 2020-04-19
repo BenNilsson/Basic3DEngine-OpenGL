@@ -5,14 +5,13 @@ class Penguin : GameObject
 {
 public:
 
-	Penguin();
+	Penguin(std::string modelPath, Transform transform, Shader* shader);
 	~Penguin();
 
 	void Render();
-	void Update();
+	void Update(float deltaTime);
 
 private:
-
 
 };
 

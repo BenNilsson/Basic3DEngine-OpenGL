@@ -14,6 +14,10 @@ GameObject::~GameObject()
 
 void GameObject::Update(float deltaTime)
 {
+	for (unsigned int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->Update(deltaTime);
+	}
 }
 
 void GameObject::Render()
@@ -33,8 +37,26 @@ void GameObject::Render()
 
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::mat4(1.0f);
-	model = glm::translate(model, mTransform.position);
 	model = glm::scale(model, mTransform.scale);
+	model = glm::translate(model, mTransform.position);
 	mShader->setMat4("model", model);
 	mModel->Render(*mShader);
+
+	// Render Child Objects
+	for (unsigned int i = 0; i < childObjects.size(); i++)
+	{
+		model = glm::scale(model, childObjects[i]->mTransform.scale);
+		model = glm::translate(model, childObjects[i]->mTransform.position);
+		childObjects[i]->mShader->setMat4("model", model);
+		childObjects[i]->Render();
+	}
+}
+
+void GameObject::AddChild(GameObject* child)
+{
+	childObjects.push_back(child);
+}
+
+void GameObject::RemoveChild(GameObject* child)
+{
 }

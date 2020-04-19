@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "Shader.h"
 #include "GameObject.h"
+#include "Penguin.h"
 
 class SceneLevel1 : Scene
 {
@@ -25,6 +26,6 @@ private:
 	Shader* modelShader;
 
 	GLFWwindow* mWindow;
-	GameObject* penguin;
+	Penguin* penguin;
 	GameObject* ak47;
 };

@@ -33,7 +33,6 @@ public:
 		if (instance == 0)
 		{
 			instance = new Camera(glm::vec3(0.0f, 0.0f, 3.0f));
-			// Initialise values if needed
 		}
 
 		return instance;
