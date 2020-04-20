@@ -1,6 +1,8 @@
 #pragma once
-#include <GLFW/glfw3.h>
 
+#include "GameObject.h"
+
+#include <vector>
 #include <string>
 
 class Scene
@@ -17,7 +19,14 @@ public:
 	int& GetOrder() { return mOrder; }
 	int SetOrder(int order) { mOrder = order; }
 
+	void AddGameObject(GameObject* object);
+	void RemoveGameObject(GameObject* object);
+protected:
+
+	std::vector<GameObject*> objects;
+
 private:
+
 	GLFWwindow* mWindow;
 	std::string mName;
 	int mOrder;

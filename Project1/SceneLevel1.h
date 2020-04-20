@@ -15,11 +15,9 @@ public:
 
 	void Render();
 	void Update(float deltaTime);
-
 private:
 	
 	void HandleInputs(GLFWwindow* window, float deltaTime);
-
 	void ConfigureLightShader();
 
 	Shader* lightingShader;
@@ -27,5 +25,4 @@ private:
 
 	GLFWwindow* mWindow;
 	Penguin* penguin;
-	GameObject* ak47;
 };

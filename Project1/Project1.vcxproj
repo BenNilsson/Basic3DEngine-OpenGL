@@ -146,8 +146,10 @@
     <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="GameComponent.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
@@ -156,6 +158,7 @@
     <ClInclude Include="SceneLevel1.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="SphereCollider.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Structs.h" />
     <ClInclude Include="TextureLoader.h" />

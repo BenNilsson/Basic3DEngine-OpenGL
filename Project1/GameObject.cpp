@@ -1,9 +1,26 @@
 #include "GameObject.h"
 #include "Camera.h"
 
-GameObject::GameObject(std::string modelPath, Transform transform, Shader* shader) : mShader(shader), mTransform(transform)
+#include "Scene.h"
+
+#include <algorithm>
+
+GameObject::GameObject(std::string modelPath, Transform transform, Shader* shader, Scene* scene) : mShader(shader), mTransform(transform)
 {
-	mModel = new Model((char*)modelPath.c_str());
+	if (modelPath != "")
+		mModel = new Model((char*)modelPath.c_str());
+	else mModel = nullptr;
+
+	childObjects = std::vector<GameObject*>();
+
+	mScene = scene;
+
+	// Render Model
+	mShader->use();
+
+	// Set Shader's Colors
+	mShader->setVec3("viewPos", Camera::GetInstance()->Position);
+	mShader->setFloat("material.shininess", 32.0f);
 }
 
 GameObject::~GameObject()
@@ -14,20 +31,23 @@ GameObject::~GameObject()
 
 void GameObject::Update(float deltaTime)
 {
+	// Update child objects
 	for (unsigned int i = 0; i < childObjects.size(); i++)
 	{
 		childObjects[i]->Update(deltaTime);
 	}
+
+	// Update components
+	for (unsigned int i = 0; i < gameComponents.size(); i++)
+	{
+		gameComponents[i]->Update(deltaTime);
+	}
 }
 
-void GameObject::Render()
+void GameObject::Render(glm::mat4 _model)
 {
 	// Render Model
 	mShader->use();
-
-	// Set Shader's Colors
-	mShader->setVec3("viewPos", Camera::GetInstance()->Position);
-	mShader->setFloat("material.shininess", 32.0f);
 
 	// View/Projection Transforms
 	glm::mat4 projection = glm::perspective(glm::radians(Camera::GetInstance()->Zoom), (float)1920 / (float)1080, 0.1f, 100.0f);
@@ -36,19 +56,51 @@ void GameObject::Render()
 	mShader->setMat4("view", view);
 
 	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::mat4(1.0f);
-	model = glm::scale(model, mTransform.scale);
+	// Translate
 	model = glm::translate(model, mTransform.position);
-	mShader->setMat4("model", model);
-	mModel->Render(*mShader);
+	// Rotation - x, y, z
+	model = glm::rotate(model, glm::radians(mTransform.rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+	model = glm::rotate(model, glm::radians(mTransform.rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+	model = glm::rotate(model, glm::radians(mTransform.rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+	// Scale
+	model = glm::scale(model, mTransform.scale);
 
+	// Set forward vvector
+	glm::mat4 inverted = glm::inverse(model);
+	mTransform.forward = normalize(glm::vec3(inverted[2]) * glm::vec3(-1, 1, 1));
+
+	model = _model * model;
+	mShader->setMat4("model", model);
+
+	// Render Model
+	if(mModel != nullptr)
+		mModel->Render(*mShader);
+	
 	// Render Child Objects
 	for (unsigned int i = 0; i < childObjects.size(); i++)
 	{
-		model = glm::scale(model, childObjects[i]->mTransform.scale);
-		model = glm::translate(model, childObjects[i]->mTransform.position);
-		childObjects[i]->mShader->setMat4("model", model);
-		childObjects[i]->Render();
+		childObjects[i]->Render(model);
+	}
+
+	// Render components
+	for (unsigned int i = 0; i < gameComponents.size(); i++)
+	{
+		gameComponents[i]->Render();
+	}
+}
+
+void GameObject::HandleInput(GLFWwindow* window, float deltaTime)
+{
+	// Child input
+	for (unsigned int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->HandleInput(window, deltaTime);
+	}
+
+	// Component input
+	for (unsigned int i = 0; i < gameComponents.size(); i++)
+	{
+		gameComponents[i]->HandleInput(window, deltaTime);
 	}
 }
 
@@ -59,4 +111,44 @@ void GameObject::AddChild(GameObject* child)
 
 void GameObject::RemoveChild(GameObject* child)
 {
+	childObjects.erase(std::remove(childObjects.begin(), childObjects.end(), child), childObjects.end());
+}
+
+void GameObject::AddComponent(GameComponent* component)
+{
+	gameComponents.push_back(component);
+}
+
+GameComponent* GameObject::GetComponent(GameComponent* component)
+{
+	GameComponent* result;
+
+	auto it = std::find(gameComponents.begin(), gameComponents.end(), component);
+	
+	if (it != gameComponents.end())
+		result = component;
+	else result = nullptr;
+
+	return result;
+}
+
+GameComponent* GameObject::GetComponentInChild(GameComponent* component, int childIndex)
+{
+	if (childObjects[childIndex] == nullptr) return nullptr;
+
+	GameComponent* result;
+
+	auto it = std::find(childObjects[childIndex]->gameComponents.begin(), childObjects[childIndex]->gameComponents.end(), component);
+
+	if (it != childObjects[childIndex]->gameComponents.end())
+		result = component;
+	else result = nullptr;
+
+	return result;
+}
+
+void GameObject::Destroy()
+{
+	mScene->RemoveGameObject(this);
+	delete this;
 }

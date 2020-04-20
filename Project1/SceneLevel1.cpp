@@ -23,10 +23,6 @@ glm::vec3(0.8f, 0.8f, 0.8f)
 };
 
 
-
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-
 SceneLevel1::SceneLevel1(GLFWwindow* window) : Scene("level1", window)
 {
 	// Shaders
@@ -41,9 +37,9 @@ SceneLevel1::SceneLevel1(GLFWwindow* window) : Scene("level1", window)
 	ConfigureLightShader();
 
 	// Game Objects
-	penguin = new Penguin((char*)"Objects/Penguinv2/Penguin.obj", Transform(glm::vec3(0.5f, -1.0f, 0.0f), glm::vec3(1.0f), glm::vec3(1.0f)), lightingShader);
+	//penguin = new Penguin((char*)"", Transform(glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this);
+	AddGameObject((GameObject*) new Penguin((char*)"", Transform(glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
 
-	ak47 = new GameObject((char*)"Objects/ak47/ak_47.obj", Transform(glm::vec3(1.3f, -0.15f, 1.0f), glm::vec3(0.50f), glm::vec3(1.0f)), lightingShader);
 }
 
 SceneLevel1::~SceneLevel1()
@@ -66,12 +62,18 @@ void SceneLevel1::Update(float deltaTime)
 	// World Transform
 	glm::mat4 model = glm::mat4(1.0f);
 	lightingShader->setMat4("model", model);
+
+	// Update game objects
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects[i]->Update(deltaTime);
+	
 }
 
 void SceneLevel1::Render()
 {
-	ak47->Render();
-	penguin->Render();
+	// Render game objects
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects[i]->Render(glm::mat4(1.0f));
 }
 
 
@@ -90,6 +92,10 @@ void SceneLevel1::HandleInputs(GLFWwindow* window, float deltaTime)
 		Camera::GetInstance()->ProcessKeyboard(DOWN, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
 		Camera::GetInstance()->ProcessKeyboard(UP, deltaTime);
+
+	// Handle game objects input
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects[i]->HandleInput(window, deltaTime);
 }
 
 
