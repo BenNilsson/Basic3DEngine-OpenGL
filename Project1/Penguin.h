@@ -11,15 +11,22 @@ public:
 	void Update(float deltaTime);
 	void HandleInput(GLFWwindow* window, float deltaTime);
 
+	// Callbacks
+	//virtual void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+	//virtual void scroll_callback(GLFWwindow* window, double offset, double yoffset);
+	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
 	void Destroy();
 
 private:
 
-	float mMovementSpeed = 3.0f;
+	float mMovementSpeed = 4.0f;
 
 	GameObject* penguinGFX;
 	GameObject* ak47;
 	glm::vec3 startPos;
+
+	bool mFreeze;
 
 };
 

@@ -15,6 +15,7 @@
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double offset, double yoffset);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 void HandleInputs(GLFWwindow* window);
@@ -56,6 +57,7 @@ int main(void)
 	
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
+	glfwSetKeyCallback(window, key_callback);
 	
 	// tell GLFW to capture our mouse
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -147,9 +149,30 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	Camera::GetInstance()->lastY = ypos;
 
 	Camera::GetInstance()->ProcessMouseMovement(xoffset, yoffset);
+
+	// Scene callback
+	if (SceneManager::GetInstance()->GetCurrentScene() != nullptr)
+	{
+		SceneManager::GetInstance()->GetCurrentScene()->mouse_callback(window, xpos, ypos);
+	}
 }
 
 void scroll_callback(GLFWwindow* window, double offset, double yoffset)
 {
 	Camera::GetInstance()->ProcessMouseScroll(yoffset);
+
+	// Scene callback
+	if (SceneManager::GetInstance()->GetCurrentScene() != nullptr)
+	{
+		SceneManager::GetInstance()->GetCurrentScene()->scroll_callback(window, offset, yoffset);
+	}
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	// Scene callback
+	if (SceneManager::GetInstance()->GetCurrentScene() != nullptr)
+	{
+		SceneManager::GetInstance()->GetCurrentScene()->key_callback(window, key, scancode, action, mods);
+	}
 }

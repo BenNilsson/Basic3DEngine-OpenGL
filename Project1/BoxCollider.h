@@ -1,36 +1,22 @@
 #pragma once
 
+#include <glm/glm.hpp>
+
 #include "GameComponent.h"
+#include "IntersectData.h"
 
 class BoxCollider : GameComponent
 {
 public:
-	BoxCollider()
-	{
-		x = 0.0f;
-		y = 0.0f;
-		z = 0.0f;
-		width = 0.0f;
-		height = 0.0f;
-		depth = 0.0f;
-	}
 
-	BoxCollider(float x, float y, float z, float width, float height, float depth)
-	{
-		this->x = x;
-		this->y = y;
-		this->z = z;
-		this->width = width;
-		this->height = height;
-		this->depth = depth;
-	}
+	BoxCollider(const glm::vec3& minExtents, const glm::vec3& maxExtents) : mMinExtents(minExtents), mMaxExtents(maxExtents) {}
 
-	float x;
-	float y;
-	float z;
+	IntersectData IntersectBoxCollider(const BoxCollider& other) const;
 
-	float width;
-	float height;
-	float depth;
+	inline const glm::vec3& GetMinExtents() const { return mMinExtents; }
+	inline const glm::vec3& GetMaxExtents() const { return mMaxExtents; }
 
+private:
+	const glm::vec3 mMinExtents;
+	const glm::vec3 mMaxExtents;
 };

@@ -1,41 +1,36 @@
-﻿  GameObject.cpp
-D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
-  Model.cpp
-D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+﻿  Camera.cpp
+  GameObject.cpp
 D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
   Penguin.cpp
-D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
-  Scene.cpp
 D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
   SceneLevel1.cpp
 D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
 D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(112,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(112,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(112,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(116,56): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(117,60): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(120,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(120,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(120,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(124,56): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(125,60): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(128,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(128,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(128,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(132,56): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(133,60): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(136,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(136,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(136,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(140,56): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(141,60): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(149,51): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(133,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(133,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(133,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(137,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(138,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(141,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(141,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(141,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(145,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(146,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(149,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(149,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(149,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(153,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(154,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(157,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(157,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(157,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(161,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(162,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(170,51): warning C4305: 'argument': truncation from 'double' to 'float'
   SceneManager.cpp
-D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(150,55): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(171,55): warning C4305: 'argument': truncation from 'double' to 'float'
 D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
 D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   main.cpp
@@ -43,13 +38,13 @@ D:\OpenGL Attemps\Project1\Project1\SceneManager.h(38,28): warning C4267: 'retur
 D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
 D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 D:\OpenGL Attemps\Project1\Project1\SceneManager.h(38,28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\main.cpp(86,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\main.cpp(138,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\main.cpp(139,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\main.cpp(143,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\main.cpp(144,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\main.cpp(146,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\OpenGL Attemps\Project1\Project1\main.cpp(147,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(88,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(140,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(141,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(145,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(146,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(148,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(149,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating Code...
-D:\OpenGL Attemps\Project1\Project1\main.cpp(154,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(162,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Project1.vcxproj -> D:\OpenGL Attemps\Project1\x64\Debug\Project1.exe

@@ -37,15 +37,15 @@
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{874f2d4c-f559-425d-b4a9-ebc4e1621861}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\PhysicsEngine">
+      <UniqueIdentifier>{9e76014c-7f50-455d-acd4-9377b5848646}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="glad\src\glad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SceneLevel1.cpp">
@@ -69,11 +69,17 @@
     <ClCompile Include="Penguin.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="SphereCollider.cpp">
+      <Filter>Source Files\GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>Source Files\GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Penguin.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
@@ -113,11 +119,17 @@
     <ClInclude Include="stb_image.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="SphereCollider.h">
+      <Filter>Header Files\GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="IntersectData.h">
+      <Filter>Header Files\PhysicsEngine</Filter>
+    </ClInclude>
     <ClInclude Include="BoxCollider.h">
       <Filter>Header Files\GameComponents</Filter>
     </ClInclude>
-    <ClInclude Include="SphereCollider.h">
-      <Filter>Header Files\GameComponents</Filter>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

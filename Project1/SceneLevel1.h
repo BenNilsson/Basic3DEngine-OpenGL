@@ -15,9 +15,15 @@ public:
 
 	void Render();
 	void Update(float deltaTime);
+	void HandleInputs(GLFWwindow* window, float deltaTime);
+
+	// Callbacks
+	void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+	void scroll_callback(GLFWwindow* window, double offset, double yoffset);
+	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
 private:
 	
-	void HandleInputs(GLFWwindow* window, float deltaTime);
 	void ConfigureLightShader();
 
 	Shader* lightingShader;

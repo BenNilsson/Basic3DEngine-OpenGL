@@ -27,6 +27,24 @@ GameObject::~GameObject()
 {
 	delete mModel;
 	mModel = nullptr;
+
+	delete mShader;
+	mShader = nullptr;
+
+	for (unsigned int i = 0; i < childObjects.size(); i++)
+	{
+		delete childObjects[i];
+		childObjects[i] = nullptr;
+	}
+
+	for (unsigned int i = 0; i < gameComponents.size(); i++)
+	{
+		delete gameComponents[i];
+		gameComponents[i] = nullptr;
+	}
+
+	delete mScene;
+	mScene = nullptr;
 }
 
 void GameObject::Update(float deltaTime)
@@ -150,5 +168,36 @@ GameComponent* GameObject::GetComponentInChild(GameComponent* component, int chi
 void GameObject::Destroy()
 {
 	mScene->RemoveGameObject(this);
-	delete this;
+
+	for (unsigned int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->Destroy();
+	}
+}
+
+void GameObject::mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	// Child callback
+	for (unsigned int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->mouse_callback(window, xpos, ypos);
+	}
+}
+
+void GameObject::scroll_callback(GLFWwindow* window, double offset, double yoffset)
+{
+	// Child callback
+	for (unsigned int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->scroll_callback(window, offset, yoffset);
+	}
+}
+
+void GameObject::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	// Child callback
+	for (unsigned int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->key_callback(window, key, scancode, action, mods);
+	}
 }

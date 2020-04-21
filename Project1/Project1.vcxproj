@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glad\src\glad.c" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneLevel1.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SphereCollider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoxCollider.h" />
@@ -151,6 +153,7 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameComponent.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="IntersectData.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Penguin.h" />

@@ -98,6 +98,27 @@ void SceneLevel1::HandleInputs(GLFWwindow* window, float deltaTime)
 		objects[i]->HandleInput(window, deltaTime);
 }
 
+void SceneLevel1::mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	// game objects callback
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects[i]->mouse_callback(window, xpos, ypos);
+}
+
+void SceneLevel1::scroll_callback(GLFWwindow* window, double offset, double yoffset)
+{
+	// game objects callback
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects[i]->scroll_callback(window, offset, yoffset);
+}
+
+void SceneLevel1::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	// game objects callback
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects[i]->key_callback(window, key, scancode, action, mods);
+}
+
 
 
 void SceneLevel1::ConfigureLightShader()

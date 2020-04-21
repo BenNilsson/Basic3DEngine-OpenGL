@@ -20,6 +20,11 @@ public:
 	virtual void HandleInput(GLFWwindow* window, float deltaTime);
 	virtual void Destroy();
 
+	// Callbacks
+	virtual void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+	virtual void scroll_callback(GLFWwindow* window, double offset, double yoffset);
+	virtual void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
 	void AddChild(GameObject* child);
 	void RemoveChild(GameObject* child);
 
@@ -34,8 +39,8 @@ public:
 
 protected:
 
-	Scene* mScene;
 	std::vector<GameObject*> childObjects;
+	Scene* mScene;
 	std::vector<GameComponent*> gameComponents;
 
 };
