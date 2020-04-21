@@ -6,6 +6,7 @@
 
 #include "GameComponent.h"
 #include "IntersectData.h"
+#include "BoxCollider.h"
 
 class SphereCollider : GameComponent
 {
@@ -14,6 +15,7 @@ public:
 	SphereCollider(const glm::vec3& center, float radius) : mCenter(center), mRadius(radius) {}
 
 	IntersectData IntersectSphereCollider(const SphereCollider& other);
+	IntersectData IntersectBoxCollider(const BoxCollider& other);
 
 	inline const glm::vec3& GetCenter() const { return mCenter; }
 	inline float GetRadius() const { return mRadius; }

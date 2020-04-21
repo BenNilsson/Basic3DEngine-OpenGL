@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "RigidBody.h"
 
 class Penguin : GameObject
 {
@@ -21,6 +22,8 @@ public:
 private:
 
 	float mMovementSpeed = 4.0f;
+
+	RigidBody* mRigidbody;
 
 	GameObject* penguinGFX;
 	GameObject* ak47;

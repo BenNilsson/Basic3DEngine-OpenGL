@@ -37,7 +37,10 @@
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{874f2d4c-f559-425d-b4a9-ebc4e1621861}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\PhysicsEngine">
+    <Filter Include="Header Files\StaticLibs">
+      <UniqueIdentifier>{2eef7904-4766-4f36-8207-e78eb2f65a0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
       <UniqueIdentifier>{9e76014c-7f50-455d-acd4-9377b5848646}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -69,14 +72,17 @@
     <ClCompile Include="Penguin.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SphereCollider.cpp">
-      <Filter>Source Files\GameComponents</Filter>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="BoxCollider.cpp">
       <Filter>Source Files\GameComponents</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\Core</Filter>
+    <ClCompile Include="RigidBody.cpp">
+      <Filter>Source Files\GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereCollider.cpp">
+      <Filter>Source Files\GameComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,20 +122,23 @@
     <ClInclude Include="Constants.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="stb_image.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="SphereCollider.h">
       <Filter>Header Files\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="IntersectData.h">
-      <Filter>Header Files\PhysicsEngine</Filter>
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="BoxCollider.h">
       <Filter>Header Files\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files\StaticLibs</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBody.h">
+      <Filter>Header Files\GameComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
