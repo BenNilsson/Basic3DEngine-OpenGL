@@ -37,9 +37,16 @@ SceneLevel1::SceneLevel1(GLFWwindow* window) : Scene("level1", window)
 	ConfigureLightShader();
 
 	// Game Objects
-	//penguin = new Penguin((char*)"", Transform(glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this);
-	AddGameObject((GameObject*) new Penguin((char*)"", Transform(glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
+	AddGameObject((GameObject*) new Penguin((char*)"", Transform(glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), modelShader, this));
+	AddGameObject(new GameObject("Objects/Plane/plane.obj", Transform(glm::vec3(3.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
 
+	Penguin* object = (Penguin*) new Penguin((char*)"", Transform(glm::vec3(7.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), modelShader, this);
+	GameObject* ak47 = new GameObject((char*)"Objects/ak47/ak_47.obj", Transform(glm::vec3(0.60f, 1.2f, 0.50f), glm::vec3(0.30f), glm::vec3(0.0f, -90.0f, 0.0f)), modelShader, this);
+	GameObject* obj = (GameObject*)object;
+	obj->AddChild(ak47);
+	object->mMovementSpeed = 2.0f;
+	object->mRigidbody.mVelocity = glm::vec3(-1.0f, 0.0f, 0.0f);
+	AddGameObject((GameObject*)object);
 }
 
 SceneLevel1::~SceneLevel1()
@@ -48,6 +55,7 @@ SceneLevel1::~SceneLevel1()
 
 void SceneLevel1::Update(float deltaTime)
 {
+	Scene::Update(deltaTime);
 	// Set Lighting Shader's Colors
 	lightingShader->use();
 	lightingShader->setVec3("viewPos", Camera::GetInstance()->Position);
@@ -62,18 +70,12 @@ void SceneLevel1::Update(float deltaTime)
 	// World Transform
 	glm::mat4 model = glm::mat4(1.0f);
 	lightingShader->setMat4("model", model);
-
-	// Update game objects
-	for (unsigned int i = 0; i < objects.size(); i++)
-		objects[i]->Update(deltaTime);
 	
 }
 
 void SceneLevel1::Render()
 {
-	// Render game objects
-	for (unsigned int i = 0; i < objects.size(); i++)
-		objects[i]->Render(glm::mat4(1.0f));
+	Scene::Render();
 }
 
 

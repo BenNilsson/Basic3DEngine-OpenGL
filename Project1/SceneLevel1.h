@@ -30,5 +30,4 @@ private:
 	Shader* modelShader;
 
 	GLFWwindow* mWindow;
-	Penguin* penguin;
 };

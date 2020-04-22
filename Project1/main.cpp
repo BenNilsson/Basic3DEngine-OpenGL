@@ -10,6 +10,7 @@
 #include "Shader.h"
 #include "Camera.h"
 #include "GameObject.h"
+#include "PhysicsEngine.h"
 
 #include <iostream>
 
@@ -72,6 +73,9 @@ int main(void)
 	// Enable Z-Buffer (Depth Testing)
 	glEnable(GL_DEPTH_TEST);
 
+	// Initialise PhysicsEngine
+	PhysicsEngine::GetInstance();
+
 	// Camera
 	Camera::GetInstance();
 
@@ -96,6 +100,7 @@ int main(void)
 		// Input
 		HandleInputs(window);
 
+
 		// Update & Render current scene if they exist
 		if (SceneManager::GetInstance()->GetCurrentScene() != nullptr)
 		{
@@ -103,6 +108,11 @@ int main(void)
 			SceneManager::GetInstance()->Update(deltaTime);
 			SceneManager::GetInstance()->Render();
 		}
+
+		// Handle collisions
+		PhysicsEngine::GetInstance()->Simulate(deltaTime);
+		PhysicsEngine::GetInstance()->HandleCollisions();
+
 
 		// GLFW: Swap buffer and poll IO events
 		glfwSwapBuffers(window);

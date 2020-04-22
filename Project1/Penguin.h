@@ -19,15 +19,14 @@ public:
 
 	void Destroy();
 
+	float mMovementSpeed = 4.0f;
+	RigidBody mRigidbody;
 private:
 
-	float mMovementSpeed = 4.0f;
-
-	RigidBody* mRigidbody;
+	SphereCollider* mSphereCollider;
 
 	GameObject* penguinGFX;
 	GameObject* ak47;
-	glm::vec3 startPos;
 
 	bool mFreeze;
 

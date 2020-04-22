@@ -4,25 +4,29 @@
 
 #include <glm/glm.hpp>
 
-#include "GameComponent.h"
-#include "IntersectData.h"
-#include "BoxCollider.h"
+#include "Collider.h"
 
-class SphereCollider : GameComponent
+class SphereCollider : public Collider
 {
 public:
 
-	SphereCollider(const glm::vec3& center, float radius) : mCenter(center), mRadius(radius) {}
+	SphereCollider(const glm::vec3& center, float radius) : Collider(Collider::COLLIDER_SPHERE), mCenter(center), mRadius(radius) {}
+
+	void Transform(const glm::vec3& translation);
 
 	IntersectData IntersectSphereCollider(const SphereCollider& other);
-	IntersectData IntersectBoxCollider(const BoxCollider& other);
 
-	inline const glm::vec3& GetCenter() const { return mCenter; }
+	void Update(float deltaTime) {}
+	void Render() {}
+	void HandleInput(GLFWwindow* window, float deltaTime) {}
+
+	glm::vec3 GetCenter() const { return mCenter; }
+
 	inline float GetRadius() const { return mRadius; }
 
+	glm::vec3 mCenter;
 private:
-	const glm::vec3 mCenter;
-	const float mRadius;
+	float mRadius;
 };
 
 #endif

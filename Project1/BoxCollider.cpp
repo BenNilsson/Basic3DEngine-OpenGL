@@ -14,5 +14,5 @@ IntersectData BoxCollider::IntersectBoxCollider(const BoxCollider& other) const
 	if (distances.y > maxDist) maxDist = distances.y;
 	if (distances.z > maxDist) maxDist = distances.z;
 
-	return IntersectData(maxDist < 0, maxDist);
+	return IntersectData(maxDist < 0, distances);
 }

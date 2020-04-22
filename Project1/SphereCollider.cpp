@@ -1,28 +1,24 @@
 #include "SphereCollider.h"
 
-IntersectData SphereCollider::IntersectSphereCollider(const SphereCollider& other)
-{
-	// Determine whether the two spheres are intersecting
-	float radiusDist = mRadius + other.mRadius;
-	float centerDist = (other.GetCenter() - mCenter).length();
 
-	if (centerDist < radiusDist)
-		return IntersectData(true, centerDist - radiusDist);
-	else
-		return IntersectData(false, centerDist - radiusDist);
+#include <glm/glm.hpp>
+#include <iostream>
+
+void SphereCollider::Transform(const glm::vec3& translation)
+{
+	mCenter += translation;
 }
 
-IntersectData SphereCollider::IntersectBoxCollider(const BoxCollider& other)
+IntersectData SphereCollider::IntersectSphereCollider(const SphereCollider& other)
 {
-	// Get box's closest point to the sphere's center by clamping
-	float x = glm::max(other.GetMinExtents().x, glm::min(mCenter.x, other.GetMaxExtents().x));
-	float y = glm::max(other.GetMinExtents().y, glm::min(mCenter.y, other.GetMaxExtents().y));
-	float z = glm::max(other.GetMinExtents().z, glm::min(mCenter.z, other.GetMaxExtents().z));
+	
+	// Determine whether the two spheres are intersecting
+	float radiusDist = mRadius + other.mRadius;
+	float centerDist = glm::length(other.GetCenter() - mCenter);
+	glm::vec3 direction = (other.GetCenter() - mCenter);
+	float dist = centerDist - radiusDist;
+	direction /= centerDist;
 
-	// Check if the point intersect the sphere
-	float dist = glm::sqrt((x - mCenter.x) * (x - mCenter.x) +
-		(y - mCenter.y) * (y - mCenter.y) +
-		(z - mCenter.z) * (z - mCenter.z));
+	return IntersectData(dist < 0, direction * dist);
 
-	return IntersectData(dist < mRadius, dist);
 }
