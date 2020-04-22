@@ -15,6 +15,7 @@ public:
 
 	void Render();
 	void Update(float deltaTime);
+	void FixedUpdate(float deltaTime);
 	void HandleInputs(GLFWwindow* window, float deltaTime);
 
 	// Callbacks

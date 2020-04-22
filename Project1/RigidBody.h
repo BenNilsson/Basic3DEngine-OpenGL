@@ -22,6 +22,7 @@ public:
 	void Integrate(float deltaTime);
 
 	inline const glm::vec3 GetPosition() const { return mPosition; }
+	inline const glm::vec3 GetOldPos() const { return mOldPosition; }
 	inline const glm::vec3 GetRotation() const { return mRotation; }
 	inline const glm::vec3 GetVelocity() const { return mVelocity; }
 

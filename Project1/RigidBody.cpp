@@ -16,9 +16,11 @@ RigidBody::RigidBody(const RigidBody& other) :
 
 void RigidBody::Update(float deltaTime)
 {
-	std::cout << mCollider->GetCenter().x << " | " << mCollider->GetCenter().y << " | " << mCollider->GetCenter().z << 
+	/*
+	std::cout << mCollider->GetCenter().x << " | " << mCollider->GetCenter().y << " | " << mCollider->GetCenter().z <<
 	" | " << mPosition.x << " | " << mPosition.y << " | " << mPosition.z <<
 	std::endl;
+	*/
 	
 }
 

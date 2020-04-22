@@ -9,6 +9,11 @@ void SceneManager::Update(float deltaTime)
 	mCurrentScene->Update(deltaTime);
 }
 
+void SceneManager::FixedUpdate(float deltaTime)
+{
+	mCurrentScene->FixedUpdate(deltaTime);
+}
+
 void SceneManager::Render()
 {
 	mCurrentScene->Render();

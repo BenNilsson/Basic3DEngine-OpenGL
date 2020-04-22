@@ -10,6 +10,7 @@ public:
 	~Penguin();
 
 	void Update(float deltaTime);
+	void FixedUpdate(float deltaTime);
 	void HandleInput(GLFWwindow* window, float deltaTime);
 
 	// Callbacks
@@ -27,8 +28,6 @@ private:
 
 	GameObject* penguinGFX;
 	GameObject* ak47;
-
-	bool mFreeze;
 
 };
 

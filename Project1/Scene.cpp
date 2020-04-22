@@ -14,6 +14,13 @@ void Scene::Update(float deltaTime)
 		objects[i]->Update(deltaTime);
 }
 
+void Scene::FixedUpdate(float deltaTime)
+{
+	// Update game objects
+	for (unsigned int i = 0; i < objects.size(); i++)
+		objects[i]->FixedUpdate(deltaTime);
+}
+
 void Scene::AddGameObject(GameObject* object)
 {
 	objects.push_back(object);

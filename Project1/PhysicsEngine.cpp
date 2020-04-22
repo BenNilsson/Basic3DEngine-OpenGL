@@ -33,10 +33,15 @@ void PhysicsEngine::HandleCollisions()
 			if (intersectData.GetDoesIntersect())
 			{
 				glm::vec3 dir = glm::normalize(intersectData.GetDirection());
-				glm::vec3 otherDir = glm::normalize(glm::reflect(mRigidbodies[i]->GetVelocity(), dir));
+				glm::vec3 otherDir = glm::reflect(dir, glm::normalize(mRigidbodies[i]->GetVelocity()));
 
-				mRigidbodies[i]->mVelocity = glm::reflect(mRigidbodies[i]->mVelocity, otherDir);
-				mRigidbodies[j]->mVelocity = glm::reflect(mRigidbodies[j]->mVelocity, dir);
+				mRigidbodies[i]->mVelocity = glm::reflect(otherDir, mRigidbodies[i]->mVelocity);
+				mRigidbodies[i]->mPosition = mRigidbodies[i]->GetOldPos();
+
+				mRigidbodies[j]->mVelocity = glm::reflect(dir, mRigidbodies[j]->mVelocity);
+				mRigidbodies[j]->mPosition = mRigidbodies[j]->GetOldPos();
+
+				std::cout << "Colliison detected" << std::endl;
 			}
 		}
 	}

@@ -25,6 +25,9 @@ void HandleInputs(GLFWwindow* window);
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+float timer = 0.0f;
+float fixedStep = 0.016f;
+
 int main(void)
 {
 	// GLFW Initialise and configure
@@ -100,19 +103,34 @@ int main(void)
 		// Input
 		HandleInputs(window);
 
+		while (timer > fixedStep)
+		{
+			/*
+			Current problem:
+			These methods below and ran so often that, for instance, any form of collision response is called so rapidly that it "inverts"
+			itself. For instance, the change in velocity in HandleCollisions will not take place.
+			I assume that calling physics should happen in regards to a sort of fixedUpdate method? Like Unity, need to research it more
+			*/
+			// Update PhysicsEngine
+			PhysicsEngine::GetInstance()->Simulate(deltaTime);
+			PhysicsEngine::GetInstance()->HandleCollisions();
+			if (SceneManager::GetInstance()->GetCurrentScene() != nullptr)
+			{
+				SceneManager::GetInstance()->FixedUpdate(deltaTime);
+			}
 
-		// Update & Render current scene if they exist
+			timer -= fixedStep;
+		}
+
 		if (SceneManager::GetInstance()->GetCurrentScene() != nullptr)
 		{
 			SceneManager::GetInstance()->HandleInput(window, deltaTime);
 			SceneManager::GetInstance()->Update(deltaTime);
 			SceneManager::GetInstance()->Render();
 		}
-
-		// Handle collisions
-		PhysicsEngine::GetInstance()->Simulate(deltaTime);
-		PhysicsEngine::GetInstance()->HandleCollisions();
-
+		
+		timer += deltaTime;
+		
 
 		// GLFW: Swap buffer and poll IO events
 		glfwSwapBuffers(window);

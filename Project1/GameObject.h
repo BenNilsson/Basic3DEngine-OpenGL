@@ -16,6 +16,7 @@ public:
 	~GameObject();
 
 	virtual void Update(float deltaTime);
+	virtual void FixedUpdate(float deltaTime);
 	virtual void Render(glm::mat4 _model);
 	virtual void HandleInput(GLFWwindow* window, float deltaTime);
 	virtual void Destroy();

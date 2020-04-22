@@ -62,6 +62,15 @@ void GameObject::Update(float deltaTime)
 	}
 }
 
+void GameObject::FixedUpdate(float deltaTime)
+{
+	// Update child objects
+	for (unsigned int i = 0; i < childObjects.size(); i++)
+	{
+		childObjects[i]->FixedUpdate(deltaTime);
+	}
+}
+
 void GameObject::Render(glm::mat4 _model)
 {
 	// Render Model
