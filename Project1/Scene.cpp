@@ -1,5 +1,15 @@
 #include "Scene.h"
 
+Scene::Scene(std::string name, GLFWwindow* window)
+{
+	mName = name; 
+	mWindow = window;
+}
+
+Scene::~Scene()
+{
+}
+
 void Scene::Render()
 {
 	// Render game objects

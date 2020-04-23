@@ -124,7 +124,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 
 	std::vector<Texture> heightMaps = loadMaterialTextures(mat, aiTextureType_AMBIENT, "texture_height");
 	textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
-	
+
 	return Mesh(vertices, indices, textures);
 }
 

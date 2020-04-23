@@ -25,7 +25,7 @@ public:
 private:
 
 	SphereCollider* mSphereCollider;
-
+	float mRotationAmount;
 	GameObject* penguinGFX;
 	GameObject* ak47;
 

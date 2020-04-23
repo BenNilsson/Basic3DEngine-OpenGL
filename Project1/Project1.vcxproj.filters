@@ -66,12 +66,6 @@
     <ClCompile Include="Model.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Penguin.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
@@ -93,6 +87,18 @@
     <ClCompile Include="Collider.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Lamp.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Penguin.h">
@@ -107,9 +113,6 @@
     <ClInclude Include="GameComponent.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
@@ -117,9 +120,6 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="TextureLoader.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="SceneLevel1.h">
@@ -154,6 +154,18 @@
     </ClInclude>
     <ClInclude Include="BoxCollider.h">
       <Filter>Header Files\GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\Levels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

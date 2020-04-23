@@ -11,6 +11,8 @@ GameObject::GameObject(std::string modelPath, Transform transform, Shader* shade
 		mModel = new Model((char*)modelPath.c_str());
 	else mModel = nullptr;
 
+	
+
 	childObjects = std::vector<GameObject*>();
 
 	mScene = scene;
@@ -73,6 +75,8 @@ void GameObject::FixedUpdate(float deltaTime)
 
 void GameObject::Render(glm::mat4 _model)
 {
+	if (mShader == nullptr) return;
+
 	// Render Model
 	mShader->use();
 

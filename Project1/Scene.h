@@ -8,8 +8,8 @@
 class Scene
 {
 public:
-	Scene(std::string name, GLFWwindow* window) { mName = name; mWindow = window; }
-	~Scene() { }
+	Scene(std::string name, GLFWwindow* window);
+	~Scene();
 
 	virtual void Render();
 	virtual void Update(float deltaTime);
@@ -21,15 +21,18 @@ public:
 	virtual void scroll_callback(GLFWwindow* window, double offset, double yoffset) {}
 	virtual void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {}
 
+	// Getters & Setters
 	std::string& GetName() { return mName; }
 	int& GetOrder() { return mOrder; }
 	int SetOrder(int order) { mOrder = order; }
 
+	// Gameobjects
 	void AddGameObject(GameObject* object);
 	void RemoveGameObject(GameObject* object);
 protected:
 
 	std::vector<GameObject*> objects;
+
 
 private:
 

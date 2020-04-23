@@ -39,6 +39,9 @@ public:
 		return instance;
 	}
 
+	float SCREEN_WIDTH = 1920;
+	float SCREEN_HEIGHT = 1080;
+
 	glm::vec3 Position;
 	glm::vec3 Front;
 	glm::vec3 Up;

@@ -13,6 +13,7 @@
 #include "PhysicsEngine.h"
 
 #include <iostream>
+#include "stb_image.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double offset, double yoffset);
@@ -21,10 +22,64 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 void HandleInputs(GLFWwindow* window);
 
+// Skybox
+std::vector<std::string> mSkyboxFaces;
+Shader* mSkyboxShader;
+unsigned int mSkyboxTextures;
+
+// Skybox Vertices
+float skyboxVertices[] = {
+	-1.0f,  1.0f, -1.0f,
+		-1.0f, -1.0f, -1.0f,
+		 1.0f, -1.0f, -1.0f,
+		 1.0f, -1.0f, -1.0f,
+		 1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+
+		-1.0f, -1.0f,  1.0f,
+		-1.0f, -1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f,  1.0f,
+		-1.0f, -1.0f,  1.0f,
+
+		 1.0f, -1.0f, -1.0f,
+		 1.0f, -1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f, -1.0f,
+		 1.0f, -1.0f, -1.0f,
+
+		-1.0f, -1.0f,  1.0f,
+		-1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f, -1.0f,  1.0f,
+		-1.0f, -1.0f,  1.0f,
+
+		-1.0f,  1.0f, -1.0f,
+		 1.0f,  1.0f, -1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		-1.0f,  1.0f,  1.0f,
+		-1.0f,  1.0f, -1.0f,
+
+		-1.0f, -1.0f, -1.0f,
+		-1.0f, -1.0f,  1.0f,
+		 1.0f, -1.0f, -1.0f,
+		 1.0f, -1.0f, -1.0f,
+		-1.0f, -1.0f,  1.0f,
+		 1.0f, -1.0f,  1.0f
+};
+
+unsigned int LoadCubemap(std::vector<std::string> faces);
+unsigned int skyboxVAO, skyboxVBO;
+
 // Timing
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+// Setup a timer with a fixedStep (time between calls), this will result in ~60 fps
 float timer = 0.0f;
 float fixedStep = 0.016f;
 
@@ -42,13 +97,14 @@ int main(void)
 	glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
 	glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
 	glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+	glfwWindowHint(GLFW_SAMPLES, 4);
 
 	//SCREEN_WIDTH = mode->width;
 	//SCREEN_HEIGHT = mode->height;
 
 	// GLFW Create Window
 	// For fullscreen: glfwGetPrimaryMonitor()
-	GLFWwindow* window = glfwCreateWindow(mode->width, mode->height, "Best Window You'll Ever See 2020", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(mode->width, mode->height, "AmateurEngine 2020.exe", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -75,6 +131,37 @@ int main(void)
 
 	// Enable Z-Buffer (Depth Testing)
 	glEnable(GL_DEPTH_TEST);
+	
+	// Backface culling
+	glEnable(GL_CULL_FACE);
+
+	// Anti-aliasing
+	glEnable(GL_MULTISAMPLE);
+
+
+	// Skybox ----------
+
+	mSkyboxShader = new Shader("Shaders/skybox.vs", "Shaders/skybox.fs");
+	// Skybox VAO
+	glGenVertexArrays(1, &skyboxVAO);
+	glGenBuffers(1, &skyboxVBO);
+	glBindVertexArray(skyboxVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, skyboxVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices), &skyboxVertices, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+
+	mSkyboxFaces.push_back("Textures/Skyboxv2/right.png");
+	mSkyboxFaces.push_back("Textures/Skyboxv2/left.png");
+	mSkyboxFaces.push_back("Textures/Skyboxv2/top.png");
+	mSkyboxFaces.push_back("Textures/Skyboxv2/bottom.png");
+	mSkyboxFaces.push_back("Textures/Skyboxv2/front.png");
+	mSkyboxFaces.push_back("Textures/Skyboxv2/back.png");
+
+	mSkyboxTextures = LoadCubemap(mSkyboxFaces);
+
+	mSkyboxShader->use();
+	mSkyboxShader->setInt("skybox", 0);
 
 	// Initialise PhysicsEngine
 	PhysicsEngine::GetInstance();
@@ -105,14 +192,10 @@ int main(void)
 
 		while (timer > fixedStep)
 		{
-			/*
-			Current problem:
-			These methods below and ran so often that, for instance, any form of collision response is called so rapidly that it "inverts"
-			itself. For instance, the change in velocity in HandleCollisions will not take place.
-			I assume that calling physics should happen in regards to a sort of fixedUpdate method? Like Unity, need to research it more
-			*/
+
 			// Update PhysicsEngine
 			PhysicsEngine::GetInstance()->Simulate(deltaTime);
+			PhysicsEngine::GetInstance()->ApplyForces(deltaTime);
 			PhysicsEngine::GetInstance()->HandleCollisions();
 			if (SceneManager::GetInstance()->GetCurrentScene() != nullptr)
 			{
@@ -127,10 +210,30 @@ int main(void)
 			SceneManager::GetInstance()->HandleInput(window, deltaTime);
 			SceneManager::GetInstance()->Update(deltaTime);
 			SceneManager::GetInstance()->Render();
+			
+			// ---------- Skybox
+			mSkyboxShader->use();
+			glm::mat4 view = Camera::GetInstance()->GetViewMatrix();
+			view = glm::mat4(glm::mat3(Camera::GetInstance()->GetViewMatrix()));
+			glm::mat4 projection = glm::perspective(glm::radians(Camera::GetInstance()->Zoom), (float)Camera::GetInstance()->SCREEN_WIDTH / (float)Camera::GetInstance()->SCREEN_HEIGHT, 0.1f, 100.0f);
+			mSkyboxShader->setMat4("view", view);
+			mSkyboxShader->setMat4("projection", projection);
+
+			// Draw Skybox
+
+			// Change depth function
+			glDepthFunc(GL_LEQUAL);
+			glBindVertexArray(skyboxVAO);
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_CUBE_MAP, mSkyboxTextures);
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+			glBindVertexArray(0);
+			// Set depth function back to default
+			glDepthFunc(GL_LESS);
+			
 		}
 		
 		timer += deltaTime;
-		
 
 		// GLFW: Swap buffer and poll IO events
 		glfwSwapBuffers(window);
@@ -153,6 +256,36 @@ void HandleInputs(GLFWwindow* window)
 		glfwSetWindowShouldClose(window, true);
 	}
 
+}
+
+unsigned int LoadCubemap(std::vector<std::string> faces)
+{
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+
+	int width, height, nrChannels;
+	for (unsigned int i = 0; i < faces.size(); i++)
+	{
+		unsigned char* data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
+		if (data)
+		{
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			stbi_image_free(data);
+		}
+		else
+		{
+			std::cout << "Cubemap failed loading: " << faces[i] << std::endl;
+			stbi_image_free(data);
+		}
+	}
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+	return textureID;
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)

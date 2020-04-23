@@ -10,13 +10,15 @@ struct Material {
 struct Light {
 	vec3 position;  
   
+	float constant;
+    float linear;
+    float quadratic;
+  
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
 	
-    float constant;
-    float linear;
-    float quadratic;
+    
 };
 
 in vec3 Normal;  
@@ -41,7 +43,8 @@ void main()
     // Specular
     vec3 viewDir = normalize(viewPos - FragPos);
     vec3 reflectDir = reflect(-lightDir, norm);  
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    vec3 halfwayDir = normalize(lightDir + viewDir);
+	float spec = pow(max(dot(Normal, halfwayDir), 0.0), material.shininess);
     vec3 specular = light.specular * spec * vec3(texture(material.specular, TexCoords));
     
 	// Attenuation

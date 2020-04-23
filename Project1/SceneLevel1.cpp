@@ -2,7 +2,9 @@
 
 #include <glm/glm.hpp>
 
-#include "Constants.h"
+//#include "Constants.h"
+#include "Cube.h"
+#include "Lamp.h"
 
 #include <iostream>
 
@@ -16,37 +18,46 @@ glm::vec3 pointLightPositions[] = {
 
 // Point light colors
 glm::vec3 pointLightColors[] = {
-glm::vec3(0.8f, 0.8f, 0.8f),
-glm::vec3(0.8f, 0.8f, 0.8f),
-glm::vec3(0.8f, 0.8f, 0.8f),
-glm::vec3(0.8f, 0.8f, 0.8f)
+glm::vec3(1.0f, 1.0f, 1.0f),
+glm::vec3(1.0f, 1.0f, 1.0f),
+glm::vec3(1.0f, 1.0f, 1.0f),
+glm::vec3(1.0f, 1.0f, 1.0f)
 };
+
 
 
 SceneLevel1::SceneLevel1(GLFWwindow* window) : Scene("level1", window)
 {
-	// Shaders
-	lightingShader = new Shader("Shaders/multiple_lights.vs", "Shaders/multiple_lights.fs");
+	// Shader ---------
+	lightingShader = new Shader("Shaders/multiple_lightsv2.vs", "Shaders/multiple_lightsv2.fs");
 	modelShader = new Shader("Shaders/model.vs", "Shaders/model.fs");
+	pointLightShader = new Shader("Shaders/light_point.vs", "Shaders/light_point.fs");
 
+
+	pointLightShader->use();
+	pointLightShader->setInt("material.diffuse", 0);
+	pointLightShader->setInt("material.specular", 1);
+
+	// Configure Shader
 	lightingShader->use();
 	lightingShader->setInt("material.diffuse", 0);
 	lightingShader->setInt("material.specular", 1);
 
-	// Configure Shader
+	
 	ConfigureLightShader();
 
-	// Game Objects
-	AddGameObject((GameObject*) new Penguin((char*)"", Transform(glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), modelShader, this));
-	AddGameObject(new GameObject("Objects/Plane/plane.obj", Transform(glm::vec3(3.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
+	// Game Objects ----------
+	AddGameObject((GameObject*) new Penguin((char*)"", Transform(glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
+	
+	// Plane
+	AddGameObject(new GameObject("Objects/Plane/plane.obj", Transform(glm::vec3(3.0f, -0.01f, 0.0f), glm::vec3(3.0f), glm::vec3(0.0f)), lightingShader, this));
 
-	Penguin* object = (Penguin*) new Penguin((char*)"", Transform(glm::vec3(7.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), modelShader, this);
-	GameObject* ak47 = new GameObject((char*)"Objects/ak47/ak_47.obj", Transform(glm::vec3(0.60f, 0.4f, 0.50f), glm::vec3(0.30f), glm::vec3(0.0f, -90.0f, 0.0f)), modelShader, this);
-	GameObject* obj = (GameObject*)object;
-	obj->AddChild(ak47);
-	object->mMovementSpeed = 2.0f;
-	object->mRigidbody.mVelocity = glm::vec3(-1.0f, 0.0f, 0.0f);
-	AddGameObject((GameObject*)object);
+	// Lamps
+	AddGameObject((GameObject*) new Lamp("Objects/Lamp/lamp.obj", Transform(glm::vec3(13.0f, 0.0f, 0.0f), glm::vec3(3.0f), glm::vec3(0.0f)), pointLightShader, this));
+
+	// Cube
+	AddGameObject((GameObject*) new Cube((char*)"Objects/Cube/box.obj", Transform(glm::vec3(-3.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
+
 }
 
 SceneLevel1::~SceneLevel1()
@@ -62,15 +73,14 @@ void SceneLevel1::Update(float deltaTime)
 	lightingShader->setFloat("material.shininess", 32.0f);
 
 	// View/Projection Transforms
-	glm::mat4 projection = glm::perspective(glm::radians(Camera::GetInstance()->Zoom), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
 	glm::mat4 view = Camera::GetInstance()->GetViewMatrix();
+	glm::mat4 projection = glm::perspective(glm::radians(Camera::GetInstance()->Zoom), (float)Camera::GetInstance()->SCREEN_WIDTH / (float)Camera::GetInstance()->SCREEN_HEIGHT, 0.1f, 100.0f);
 	lightingShader->setMat4("projection", projection);
 	lightingShader->setMat4("view", view);
 
 	// World Transform
 	glm::mat4 model = glm::mat4(1.0f);
-	lightingShader->setMat4("model", model);
-	
+	lightingShader->setMat4("model", model);	
 }
 
 void SceneLevel1::FixedUpdate(float deltaTime)
@@ -82,8 +92,6 @@ void SceneLevel1::Render()
 {
 	Scene::Render();
 }
-
-
 
 void SceneLevel1::HandleInputs(GLFWwindow* window, float deltaTime)
 {
@@ -132,8 +140,8 @@ void SceneLevel1::ConfigureLightShader()
 {
 	// directional light
 	lightingShader->setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-	lightingShader->setVec3("dirLight.ambient", 0.3f, 0.24f, 0.14f);
-	lightingShader->setVec3("dirLight.diffuse", 0.7f, 0.42f, 0.26f);
+	lightingShader->setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+	lightingShader->setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
 	lightingShader->setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
 	// point light 1
 	lightingShader->setVec3("pointLights[0].position", pointLightPositions[0]);

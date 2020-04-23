@@ -29,6 +29,7 @@ private:
 
 	Shader* lightingShader;
 	Shader* modelShader;
+	Shader* pointLightShader;
 
 	GLFWwindow* mWindow;
 };
