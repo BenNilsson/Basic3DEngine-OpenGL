@@ -55,8 +55,8 @@ SceneLevel1::SceneLevel1(GLFWwindow* window) : Scene("level1", window)
 	// Lamps
 	AddGameObject((GameObject*) new Lamp("Objects/Lamp/lamp.obj", Transform(glm::vec3(13.0f, 0.0f, 0.0f), glm::vec3(3.0f), glm::vec3(0.0f)), pointLightShader, this));
 
-	// Cube
-	AddGameObject((GameObject*) new Cube((char*)"Objects/Cube/box.obj", Transform(glm::vec3(-3.0f, 0.0f, 0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
+	// Fish Barrel
+	AddGameObject((GameObject*) new Cube((char*)"Objects/Barrel_Fish/barrel_fish.obj", Transform(glm::vec3(-3.0f, 0.0f, 0.0f), glm::vec3(0.5f), glm::vec3(0.0f)), lightingShader, this));
 
 }
 

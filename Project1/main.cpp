@@ -163,7 +163,7 @@ int main(void)
 	mSkyboxShader->use();
 	mSkyboxShader->setInt("skybox", 0);
 
-	// Initialise PhysicsEngine
+	// Initialise PhysicsEngineD
 	PhysicsEngine::GetInstance();
 
 	// Camera

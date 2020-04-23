@@ -20,7 +20,7 @@ enum Camera_Movement
 // Default values
 const float YAW = -90.0f;
 const float PITCH = 0.0f;
-const float SPEED = 8.5f;
+const float SPEED = 4.5f;
 const float SENSITIVITY = 0.1f;
 const float ZOOM = 45.0f;
 
@@ -32,7 +32,7 @@ public:
 	{
 		if (instance == 0)
 		{
-			instance = new Camera(glm::vec3(3.0f, 3.0f, 10.0f));
+			instance = new Camera(glm::vec3(3.0f, 1.5f, 10.0f));
 
 		}
 
@@ -94,10 +94,14 @@ public:
 			Position -= Right * velocity;
 		if (direction == RIGHT)
 			Position += Right * velocity;
+
+		Position.y = 1.5f;
+		/*
 		if (direction == UP)
 			Position += Up * velocity;
 		if (direction == DOWN)
 			Position -= Up * velocity;
+			*/
 
 	}
 

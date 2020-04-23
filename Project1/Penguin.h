@@ -13,6 +13,8 @@ public:
 	void FixedUpdate(float deltaTime);
 	void HandleInput(GLFWwindow* window, float deltaTime);
 
+	inline bool GetIsMoving() { return mIsMoving = mRigidbody.mVelocity.x != 0.0f || mRigidbody.mVelocity.z != 0.0f; }
+
 	// Callbacks
 	//virtual void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 	//virtual void scroll_callback(GLFWwindow* window, double offset, double yoffset);
@@ -24,10 +26,11 @@ public:
 	RigidBody mRigidbody;
 private:
 
+	bool mIsMoving;
 	SphereCollider* mSphereCollider;
 	float mRotationAmount;
 	GameObject* penguinGFX;
-	GameObject* ak47;
+	GameObject* fish;
 
 };
 
