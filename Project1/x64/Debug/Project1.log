@@ -1,4 +1,28 @@
-﻿  PhysicsEngine.cpp
+﻿  SceneLevel1.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
 D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(11,28): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,0>::length_type' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(152,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(152,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(152,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(156,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(157,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(160,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(160,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(160,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(164,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(165,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(168,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(168,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(168,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(172,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(173,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(176,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(176,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(176,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(180,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(181,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(190,51): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(191,55): warning C4305: 'argument': truncation from 'double' to 'float'
   Project1.vcxproj -> D:\OpenGL Attemps\Project1\x64\Debug\Project1.exe

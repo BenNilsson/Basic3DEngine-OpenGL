@@ -96,6 +96,18 @@ public:
 			Position += Right * velocity;
 
 		Position.y = 1.5f;
+
+		// Kee player within contraints
+		if (Position.x >= 20)
+			Position.x = 20;
+		else if (Position.x <= -20)
+			Position.x = -20;
+
+		if (Position.z >= 20)
+			Position.z = 20;
+		else if (Position.z <= -20)
+			Position.z = -20;
+
 		/*
 		if (direction == UP)
 			Position += Up * velocity;

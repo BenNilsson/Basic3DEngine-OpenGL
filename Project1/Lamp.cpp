@@ -6,7 +6,6 @@
 Lamp::Lamp(std::string modelPath, Transform transform, Shader* shader, Scene* scene) : GameObject(modelPath, transform, shader, scene)
 {
 	glm::vec3 lightPos = mTransform.position + glm::vec3(0.0f, 3.25f, 2.0f);
-	
 	// Setup point light
 	shader->setVec3("light.position", lightPos);
 	shader->setVec3("light.ambient", 0.1f, 0.1f, 0.1f);

@@ -92,12 +92,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(PROJECTDIR)\glad\include;$(PROJECTDIR)\assimp\include;$(PROJECTDIR)\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PROJECTDIR)\glad\include;$(PROJECTDIR)\Freetype\freetype-2.9.1\include;$(PROJECTDIR)\Freetype\freetype-2.9.1;$(PROJECTDIR)\assimp\include;$(PROJECTDIR)\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(PROJECTDIR)\glfw\lib-vc2019;$(PROJECTDIR)\assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glfw3dll.lib;opengl32.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glfw3dll.lib;opengl32.lib;assimp-vc142-mtd.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -146,6 +146,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Penguin.cpp" />
     <ClCompile Include="PhysicsEngine.cpp" />
+    <ClCompile Include="PolarBear.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneLevel1.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="Penguin.h" />
     <ClInclude Include="PhysicsEngine.h" />
+    <ClInclude Include="PolarBear.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneLevel1.h" />

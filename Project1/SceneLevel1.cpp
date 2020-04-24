@@ -5,6 +5,7 @@
 //#include "Constants.h"
 #include "Cube.h"
 #include "Lamp.h"
+#include "PolarBear.h"
 
 #include <iostream>
 
@@ -50,13 +51,16 @@ SceneLevel1::SceneLevel1(GLFWwindow* window) : Scene("level1", window)
 	AddGameObject((GameObject*) new Penguin((char*)"", Transform(glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
 	
 	// Plane
-	AddGameObject(new GameObject("Objects/Plane/plane.obj", Transform(glm::vec3(3.0f, -0.01f, 0.0f), glm::vec3(3.0f), glm::vec3(0.0f)), lightingShader, this));
+	AddGameObject(new GameObject("Objects/Terrain/test.fbx", Transform(glm::vec3(0.0f, -0.01f, 0.0f), glm::vec3(50.0f), glm::vec3(-90.0f, 0.0f, 0.0f)), lightingShader, this));
 
 	// Lamps
 	AddGameObject((GameObject*) new Lamp("Objects/Lamp/lamp.obj", Transform(glm::vec3(13.0f, 0.0f, 0.0f), glm::vec3(3.0f), glm::vec3(0.0f)), pointLightShader, this));
 
 	// Fish Barrel
 	AddGameObject((GameObject*) new Cube((char*)"Objects/Barrel_Fish/barrel_fish.obj", Transform(glm::vec3(-3.0f, 0.0f, 0.0f), glm::vec3(0.5f), glm::vec3(0.0f)), lightingShader, this));
+
+	// Polar Bear
+	AddGameObject((GameObject*) new PolarBear((char*)"", Transform(glm::vec3(-3.0f, 0.0f, 4.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
 
 }
 
@@ -140,7 +144,7 @@ void SceneLevel1::ConfigureLightShader()
 {
 	// directional light
 	lightingShader->setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-	lightingShader->setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+	lightingShader->setVec3("dirLight.ambient", 0.35f, 0.35f, 0.35f);
 	lightingShader->setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
 	lightingShader->setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
 	// point light 1
@@ -176,6 +180,7 @@ void SceneLevel1::ConfigureLightShader()
 	lightingShader->setFloat("pointLights[3].linear", 0.09);
 	lightingShader->setFloat("pointLights[3].quadratic", 0.032);
 	// spotLight
+	
 	lightingShader->setVec3("spotLight.position", Camera::GetInstance()->Position);
 	lightingShader->setVec3("spotLight.direction", Camera::GetInstance()->Front);
 	lightingShader->setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
@@ -186,4 +191,5 @@ void SceneLevel1::ConfigureLightShader()
 	lightingShader->setFloat("spotLight.quadratic", 0.032);
 	lightingShader->setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
 	lightingShader->setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
+	
 }
