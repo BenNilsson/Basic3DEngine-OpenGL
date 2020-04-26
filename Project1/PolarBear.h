@@ -9,6 +9,8 @@ public:
 	PolarBear(std::string modelPath, Transform transform, Shader* shader, Scene* scene);
 	~PolarBear();
 
+
+	void Render(glm::mat4 _model);
 	void Update(float deltaTime);
 	void FixedUpdate(float deltaTime);
 	void HandleInput(GLFWwindow* window, float deltaTime);
@@ -30,6 +32,12 @@ private:
 	SphereCollider* mSphereCollider;
 	float mRotationAmount;
 	GameObject* gfx;
+	std::vector<glm::vec3> mWaypoints;
 
+	glm::vec3 mWayPointToMoveTo;
+	bool mHasReachedWaypoint;
+	int mWaypointIndex;
+
+	glm::mat4 matrixTransformation;
 };
 

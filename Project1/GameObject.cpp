@@ -81,7 +81,7 @@ void GameObject::Render(glm::mat4 _model)
 	mShader->use();
 
 	// View/Projection Transforms
-	glm::mat4 projection = glm::perspective(glm::radians(Camera::GetInstance()->Zoom), (float)1920 / (float)1080, 0.1f, 100.0f);
+	glm::mat4 projection = glm::perspective(glm::radians(Camera::GetInstance()->Zoom), (float)Camera::GetInstance()->SCREEN_WIDTH / (float)Camera::GetInstance()->SCREEN_HEIGHT, 0.1f, 100.0f);
 	glm::mat4 view = Camera::GetInstance()->GetViewMatrix();
 	mShader->setMat4("projection", projection);
 	mShader->setMat4("view", view);
@@ -96,9 +96,8 @@ void GameObject::Render(glm::mat4 _model)
 	// Scale
 	model = glm::scale(model, mTransform.scale);
 
-	// Set forward vvector
-	glm::mat4 inverted = glm::inverse(model);
-	mTransform.forward = normalize(glm::vec3(inverted[2]) * glm::vec3(-1, 1, 1));
+	// Set forward vector
+	mTransform.forward = normalize(glm::vec3(view[2]) * glm::vec3(1, 1, -1));
 
 	model = _model * model;
 	mShader->setMat4("model", model);

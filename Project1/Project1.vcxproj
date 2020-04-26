@@ -92,7 +92,9 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(PROJECTDIR)\glad\include;$(PROJECTDIR)\Freetype\freetype-2.9.1\include;$(PROJECTDIR)\Freetype\freetype-2.9.1;$(PROJECTDIR)\assimp\include;$(PROJECTDIR)\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PROJECTDIR)\glad\include;$(SOLUTIONDIR)freetype-2.9.1\include;$(SOLUTIONDIR)freetype-2.9.1\include\freetype;$(PROJECTDIR)\assimp\include;$(PROJECTDIR)\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>
+      </AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

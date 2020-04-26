@@ -34,7 +34,6 @@ SceneLevel1::SceneLevel1(GLFWwindow* window) : Scene("level1", window)
 	modelShader = new Shader("Shaders/model.vs", "Shaders/model.fs");
 	pointLightShader = new Shader("Shaders/light_point.vs", "Shaders/light_point.fs");
 
-
 	pointLightShader->use();
 	pointLightShader->setInt("material.diffuse", 0);
 	pointLightShader->setInt("material.specular", 1);
@@ -61,6 +60,7 @@ SceneLevel1::SceneLevel1(GLFWwindow* window) : Scene("level1", window)
 
 	// Polar Bear
 	AddGameObject((GameObject*) new PolarBear((char*)"", Transform(glm::vec3(-3.0f, 0.0f, 4.0f), glm::vec3(1.0f), glm::vec3(0.0f)), lightingShader, this));
+	
 
 }
 
@@ -85,6 +85,8 @@ void SceneLevel1::Update(float deltaTime)
 	// World Transform
 	glm::mat4 model = glm::mat4(1.0f);
 	lightingShader->setMat4("model", model);	
+
+	
 }
 
 void SceneLevel1::FixedUpdate(float deltaTime)
