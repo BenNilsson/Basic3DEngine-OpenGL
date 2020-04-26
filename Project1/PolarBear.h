@@ -20,7 +20,7 @@ public:
 	// Callbacks
 	//virtual void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 	//virtual void scroll_callback(GLFWwindow* window, double offset, double yoffset);
-	//void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 	void Destroy();
 
@@ -38,6 +38,7 @@ private:
 	bool mHasReachedWaypoint;
 	int mWaypointIndex;
 
-	glm::mat4 matrixTransformation;
+	glm::mat4 transformationMatrix;
+	bool mSpin;
 };
 

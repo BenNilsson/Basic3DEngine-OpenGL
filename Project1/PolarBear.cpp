@@ -2,6 +2,7 @@
 #include "Camera.h"
 
 #include <glm/gtx/compatibility.hpp>
+#include <glm/gtx/quaternion.hpp>
 
 PolarBear::PolarBear(std::string modelPath, Transform transform, Shader* shader, Scene* scene) : GameObject(modelPath, transform, shader, scene), mRigidbody(RigidBody(glm::vec3(0.0f, 0.0f, 0.0f)))
 {
@@ -29,7 +30,8 @@ PolarBear::PolarBear(std::string modelPath, Transform transform, Shader* shader,
 	{
 		transform.position,
 		glm::vec3(15.0f, 0.0f, 10.0f),
-		glm::vec3(-3.0f, 0.0f, -16.0f)
+		glm::vec3(-3.0f, 0.0f, -16.0f),
+		glm::vec3(-13.0f, 0.0f, -16.0f)
 	};
 	mWayPointToMoveTo = mWaypoints[mWaypointIndex];
 
@@ -59,18 +61,21 @@ void PolarBear::Render(glm::mat4 _model)
 	glm::mat4 model = glm::mat4(1.0f);
 	// Translate
 	model = glm::translate(model, mTransform.position);
-	// Rotation - x, y, z
+	
+	// Rotation
 	model = glm::rotate(model, glm::radians(mTransform.rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
 	model = glm::rotate(model, glm::radians(mTransform.rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
 	model = glm::rotate(model, glm::radians(mTransform.rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+	
 	// Scale
 	model = glm::scale(model, mTransform.scale);
 
-	// Set forward vector
-	mTransform.forward = normalize(glm::vec3(view[2]) * glm::vec3(1, 1, -1));
-	
 	model = _model * model;
 	mShader->setMat4("model", model);
+
+	// Set forward vector
+	glm::mat4 inverted = glm::inverse(model);
+	mTransform.forward = normalize(glm::vec3(inverted[2]) * glm::vec3(-1, 1, 1));
 
 	transformationMatrix = model;
 
@@ -101,49 +106,39 @@ void PolarBear::Update(float deltaTime)
 
 void PolarBear::FixedUpdate(float deltaTime)
 {
-	// Move forward and rotate, this will result in PolarBears moving around in a circle
+
+	// Beyblade bear
+	if (mSpin)
+	{
+		// Move forward and rotate, this will result in PolarBears moving around in a circle
 	// Move forward
-	
-	// Face next waypoint
-	
+		if (glm::distance(mRigidbody.mPosition, mWayPointToMoveTo) > 0.5f && !mHasReachedWaypoint)
+		{
+			// Move towards point
+			glm::vec3 interp = glm::mix(mRigidbody.mPosition, mWayPointToMoveTo, deltaTime * mMovementSpeed);
+			glm::vec3 move = glm::vec3(interp.x, interp.y, interp.z);
+			mRigidbody.mPosition = move;
+			if (glm::distance(mRigidbody.mPosition, mWayPointToMoveTo) < 0.5f)
+				mHasReachedWaypoint = true;
+		}
 
-	// Move bear towards waypoint if not within distance
-	if (glm::distance(mRigidbody.mPosition, mWayPointToMoveTo) > 0.5f && !mHasReachedWaypoint)
-	{
-		// Move towards point
-		glm::vec3 interp = glm::mix(mRigidbody.mPosition, mWayPointToMoveTo, deltaTime * mMovementSpeed);
-		glm::vec3 move = glm::vec3(interp.x, interp.y, interp.z);
-		mRigidbody.mPosition = move;
-		if (glm::distance(mRigidbody.mPosition, mWayPointToMoveTo) < 0.5f)
-			mHasReachedWaypoint = true;
+		// Move next checkpoint
+		if (mHasReachedWaypoint)
+		{
+			// Reset list if needed
+			mWaypointIndex++;
+			if (mWaypointIndex == mWaypoints.size()) mWaypointIndex = 0;
+			mWayPointToMoveTo = mWaypoints[mWaypointIndex];
+
+			// Reset progression
+			mHasReachedWaypoint = false;
+		}
+
+		// Actual beyblade feature
+		mRigidbody.mRotation.y += 10.0f;
+		if (mRigidbody.mRotation.y > 360) mRigidbody.mRotation.y -= 360;
 	}
 
-	// Move next checkpoint
-	if (mHasReachedWaypoint)
-	{
-		// Reset list if needed
-		mWaypointIndex++;
-		if (mWaypointIndex == mWaypoints.size()) mWaypointIndex = 0;
-		mWayPointToMoveTo = mWaypoints[mWaypointIndex];
-
-		// Reset progression
-		mHasReachedWaypoint = false;
-	}
-
-	std::cout << mRigidbody.mPosition.x << " | " << mRigidbody.mPosition.y << " | " << mRigidbody.mPosition.z << "  -  " << mWayPointToMoveTo.x << " | " << mWayPointToMoveTo.y << " | " << mWayPointToMoveTo.z << std::endl;
-	/*
-	mRigidbody.mRotation.y += 0.3f;
-	if (mRigidbody.mRotation.y >= 360)
-		mRigidbody.mRotation.y = 0;
-		*/
-
-	// Rotate
-	if (GetIsMoving())
-	{
-		mRigidbody.mRotation.z += mRotationAmount;
-		if (mRigidbody.mRotation.z >= 5.0f || mRigidbody.mRotation.z <= -5.0f)
-			mRotationAmount *= -1;
-	}
 
 	// Set transform to be the rigidbody's transform
 	// Note, this will make any chances to the game object's position/rotation invalid
@@ -156,6 +151,15 @@ void PolarBear::FixedUpdate(float deltaTime)
 void PolarBear::HandleInput(GLFWwindow* window, float deltaTime)
 {
 
+}
+
+void PolarBear::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (key == GLFW_KEY_T && action == GLFW_PRESS)
+	{
+		// Spin
+		mSpin = !mSpin;
+	}
 }
 
 void PolarBear::Destroy()

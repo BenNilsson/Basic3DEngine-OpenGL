@@ -1,10 +1,6 @@
-﻿  GameObject.cpp
-D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
-D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  PolarBear.cpp
+﻿  PolarBear.cpp
 D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
 D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
 D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(11,28): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Generating Code...
   Project1.vcxproj -> D:\OpenGL Attemps\Project1\x64\Debug\Project1.exe

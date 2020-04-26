@@ -4,7 +4,7 @@ Cube::Cube(std::string modelPath, Transform transform, Shader* shader, Scene* sc
 {
 	mRigidbody.mEnableGravity = false;
 	mRigidbody.mPosition = transform.position;
-	mSphereCollider = new SphereCollider(mRigidbody.mPosition + glm::vec3(0.0f), 1.0f);
+	mSphereCollider = new SphereCollider(mRigidbody.mPosition + glm::vec3(0.0f), 0.4f);
 
 	mRigidbody.mPosition = mSphereCollider->GetCenter();
 

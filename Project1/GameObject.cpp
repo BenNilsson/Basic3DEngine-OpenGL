@@ -96,11 +96,11 @@ void GameObject::Render(glm::mat4 _model)
 	// Scale
 	model = glm::scale(model, mTransform.scale);
 
-	// Set forward vector
-	mTransform.forward = normalize(glm::vec3(view[2]) * glm::vec3(1, 1, -1));
-
 	model = _model * model;
 	mShader->setMat4("model", model);
+
+	glm::mat4 inverted = glm::inverse(model);
+	mTransform.forward = normalize(glm::vec3(inverted[2]) * glm::vec3(-1, 1, 1));
 
 	// Render Model
 	if(mModel != nullptr)
