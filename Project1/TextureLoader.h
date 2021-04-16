@@ -9,7 +9,7 @@
 class TextureLoader
 {
 public:
-	// Function for loading a 2D texture from file
+	
 	static int LoadTexture(char const* path, const std::string& directory)
 	{
 		std::string fileName = std::string(path);

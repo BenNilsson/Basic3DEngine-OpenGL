@@ -51,8 +51,8 @@ void PhysicsEngine::HandleCollisions()
 				mRigidbodies[i]->mPosition = mRigidbodies[i]->GetOldPos();
 
 				// Set the position back to its previous position to avoid the collision response from triggering twice
-				//mRigidbodies[j]->mVelocity = glm::reflect(dir, mRigidbodies[j]->mVelocity);
-				//mRigidbodies[j]->mPosition = mRigidbodies[j]->GetOldPos();
+				/*mRigidbodies[j]->mVelocity = glm::reflect(dir, mRigidbodies[j]->mVelocity);
+				mRigidbodies[j]->mPosition = mRigidbodies[j]->GetOldPos();*/
 				
 				// TODO
 				// Implementation of mass, if an object has a higher mass, apply less force to it and more to others?

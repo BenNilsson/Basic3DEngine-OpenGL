@@ -1,7 +1,5 @@
 #pragma once
 
-//#include "RigidBody.h"
-
 #include <vector>
 #include <glm/glm.hpp>
 

@@ -1,6 +1,102 @@
-﻿  Generating code
-  0 of 761 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+﻿  BoxCollider.cpp
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+  Camera.cpp
+  Collider.cpp
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+  Cube.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(9,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+  GameObject.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Lamp.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(9,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneManager.h(39,28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\Lamp.cpp(16,39): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\Lamp.cpp(17,43): warning C4305: 'argument': truncation from 'double' to 'float'
+  main.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(9,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneManager.h(39,28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(153,44): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(154,45): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(216,24): warning C4838: conversion from 'FT_Pos' to 'GLuint' requires a narrowing conversion
+D:\OpenGL Attemps\Project1\Project1\main.cpp(285,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(408,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(409,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(413,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(414,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(416,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(417,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\main.cpp(430,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Mesh.cpp
+  Model.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Penguin.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(9,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+  PhysicsEngine.cpp
+D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(9,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+  PolarBear.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(9,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+  RigidBody.cpp
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(9,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Scene.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  SceneLevel1.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(9,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(154,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(154,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(154,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(158,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(159,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(162,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(162,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(162,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(166,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(167,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(170,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(170,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(170,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(174,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(175,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(178,132): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(178,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(178,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(182,56): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(183,60): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(192,51): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneLevel1.cpp(193,55): warning C4305: 'argument': truncation from 'double' to 'float'
+  SceneManager.cpp
+D:\OpenGL Attemps\Project1\Project1\Shader.h(46,35): warning C4101: 'e': unreferenced local variable
+D:\OpenGL Attemps\Project1\Project1\Mesh.h(78,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+D:\OpenGL Attemps\Project1\Project1\PhysicsEngine.h(9,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\OpenGL Attemps\Project1\Project1\SceneManager.h(39,28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  SphereCollider.cpp
+D:\OpenGL Attemps\Project1\Project1\IntersectData.h(13,61): warning C4244: 'return': conversion from 'glm::vec<3,float,glm::packed_highp>::length_type' to 'float', possible loss of data
+  glad.c
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 1303 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Project1.vcxproj -> D:\OpenGL Attemps\Project1\x64\Release\Project1.exe
